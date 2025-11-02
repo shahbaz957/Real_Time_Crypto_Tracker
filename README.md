@@ -17,3 +17,6 @@ Error Handling & Loading States: Graceful fallbacks for API issues or slow conne
 * Chart.js -> Library for creating responsive and dynamic charts
 * Tailwind CSS (assumed for styling) -> Utility-first CSS framework for modern, responsive designs
 * Vite (or Create React App)Build tool for fast development and bundling
+
+# Live App Link 
+  https://realtime-crypto-chaser.netlify.app/

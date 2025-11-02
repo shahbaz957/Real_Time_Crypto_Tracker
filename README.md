@@ -1,16 +1,19 @@
-# React + Vite
+# Crypto Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## This is a Real-Time Crypto Tracker application I built using React JS and the CoinGecko API. It fetches live cryptocurrency data, including prices, market caps, and trends, and plots them using the Chart.js library for intuitive visualizations. Whether you're a crypto enthusiast or just curious about market movements, this app provides up-to-the-minute insights at a glance.
 
-Currently, two official plugins are available:
+# Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Real-Time Data Fetching: Pulls live crypto prices, market capitalization, rankings, and supply data from CoinGecko.
+Interactive Charts: Visualize price trends over time with customizable Chart.js plots (line charts, candlesticks, etc.).
+Coin Search & Details: Easily search and view detailed stats for individual coins.
+Responsive Design: Works flawlessly on desktop, tablet, and mobile devices.
+Error Handling & Loading States: Graceful fallbacks for API issues or slow connections.
 
-## React Compiler
+# 🛠️ Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* React JS -> Frontend framework for building interactive UIs
+* CoinGecko API -> Source for real-time cryptocurrency data
+* Chart.js -> Library for creating responsive and dynamic charts
+* Tailwind CSS (assumed for styling) -> Utility-first CSS framework for modern, responsive designs
+* Vite (or Create React App)Build tool for fast development and bundling

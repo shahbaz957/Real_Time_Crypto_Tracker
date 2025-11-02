@@ -24,6 +24,7 @@ ChartJS.register(
 function CoinPage() {
   const [coinDetails, setCoinDetails] = useState(null);
   const [chartDetails, setChartDetails] = useState([]);
+  const [days, setDays] = useState(7);
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,11 +33,11 @@ function CoinPage() {
       .then((data) => setCoinDetails(data));
 
     fetch(
-      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30`
+      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`
     )
       .then((res) => res.json())
       .then((data) => setChartDetails(data.prices));
-  }, [id]);
+  }, [id, days]);
   if (!coinDetails)
     return <p className="text-center text-gray-400 mt-10">Loading...</p>;
 
@@ -47,7 +48,7 @@ function CoinPage() {
     }),
     datasets: [
       {
-        label: `${coinDetails.name} Price (30 Days)`,
+        label: `${coinDetails.name} Price (${days} Days)`,
         data: chartDetails.map((item) => item[1]),
         borderColor: "rgba(66, 135, 245, 1)", // blue line
         borderWidth: 2,
@@ -132,35 +133,47 @@ function CoinPage() {
 
       {/* Chart Placeholder */}
       <div className="mt-10 bg-gray-800 rounded-xl p-6 border border-gray-700 text-center ">
-        <Line data={chartData}
-        options={{
-      plugins: {
-        legend: {
-          labels: {
-            color: "white", // ← legend text
-          },
-        },
-      },
-      scales: {
-        x: {
-          ticks: {
-            color: "white", // ← x-axis labels
-          },
-          grid: {
-            color: "rgba(255,255,255,0.2)", // optional soft grid lines
-          },
-        },
-        y: {
-          ticks: {
-            color: "white", // ← y-axis labels
-          },
-          grid: {
-            color: "rgba(255,255,255,0.2)",
-          },
-        },
-      },
-    }}/>
+        <Line
+          data={chartData}
+          options={{
+            plugins: {
+              legend: {
+                labels: {
+                  color: "white", // ← legend text
+                },
+              },
+            },
+            scales: {
+              x: {
+                ticks: {
+                  color: "white", // ← x-axis labels
+                },
+                grid: {
+                  color: "rgba(255,255,255,0.2)", // optional soft grid lines
+                },
+              },
+              y: {
+                ticks: {
+                  color: "white", // ← y-axis labels
+                },
+                grid: {
+                  color: "rgba(255,255,255,0.2)",
+                },
+              },
+            },
+          }}
+        />
       </div>
+      <select
+        value={days}
+        onChange={(e) => setDays(parseInt(e.target.value))}
+        className="mt-8 bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="1">24 Hours</option>
+        <option value="7">1 Week</option>
+        <option value="30">1 Month</option>
+        <option value="180">6 Months</option>
+      </select>
     </div>
   );
 }
